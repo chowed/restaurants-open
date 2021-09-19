@@ -1,0 +1,44 @@
+{
+  "restaurants": [
+    {
+      "name": "Kayasa Restaurant",
+      "opening_hours": "Mon-Sun 8:30 am - 9 pm"
+    },
+    {
+      "name": "The Golden Duck",
+      "opening_hours": "Mon-Sun 11 am - 11 pm"
+    },
+    {
+      "name": "World's Best Steakhouse",
+      "opening_hours": "Mon-Fri 11 am - 11 pm; Sat 11 am - 1 am; Sun 12 pm - 9 pm"
+    },
+    {
+      "name": "Tandoori Mahal",
+      "opening_hours": "Mon-Thu 11 am - 10:30 pm; Fri 11 am - 11 pm; Sat 11:30 am - 11 pm; Sun 4:30 pm - 10:30 pm"
+    },
+    {
+      "name": "Coffee and Bagels",
+      "opening_hours": "Thu-Sun 11:30 am - 4 pm"
+    },
+    {
+      "name": "e - Dinner Sat evening*",
+      "opening_hours": "Sat 5 pm - 9pm"
+    },
+    {
+      "name": "b - Lunch onwards to late night with Fri late night*",
+      "opening_hours": "Sat-Tue 11:30 am - 12:30 am; Fri 11pm - 1:30am"
+    },
+    {
+      "name": "a - Lunch place with Thu evening to late*",
+      "opening_hours": "Thu-Sun 11:30 am - 4 pm; Thu 7 pm - 12:30 am"
+    },
+    {
+      "name": "d - Open 24/7 except at 5am*",
+      "opening_hours": "Mon-Sun 12 am - 5 am; Mon-Sun 5:01 am - 11:59 pm;"
+    },
+    {
+      "name": "c - Lunch and late night*",
+      "opening_hours": "Thu-Sun 11:30 am - 4 pm; Thu-Sun 9 pm - 2 am"
+    }
+  ]
+}
