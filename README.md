@@ -13,7 +13,7 @@ To run tests
 
 ### How it works
 
-The entrypoint of the app is at /app/index.js, where the class `Restaurant` is created. The constructor method reads the `restaurant_data.json` file and provides access to this data. The function `getRestaurantsOpenAt` takes in the user's input day and time in the form of a luxon DateTime object as its parameter.
+The entrypoint of the app is at `/app/index.js`, where the class `Restaurant` is created (lives in `app/restaurant.js`). The constructor method reads the `restaurant_data.json` file and provides access to this data. The function `getRestaurantsOpenAt` takes in the user's input day and time in the form of a luxon DateTime object as its parameter.
 
 The restaurants in `restaurant_data.json` are iterated through and each segment of the restaurant's `opening_hours` (each one is separated by a `;`) get checked by calling the helper function `checkOpeningDaysAndHours`, which passes in the DateTime object and passes in a segment.
 
@@ -29,7 +29,7 @@ Time for DateTime object and segment from `opening_hours` need to be converted i
 
 I accommodated for times going past midnight (start time > end time) by doing 2 checks on the segment in `opening_hours`: only if the day is correct, then check the duration from start time to the end of the day (1440 is the number of minutes in a day). If the the day isn't correct, then it checks through the day(s) adding an index of 1, and checks the start of the day (0) until the end time (this check can be improved due to redundant day checks - detailed under improvements). 
 
-I have followed the constructor pattern for consistency when creating the date object, though I am much more familiar with factory functions.
+I have followed the constructor pattern for consistency when creating the objects.
 
 `.find()` was used when checking the segments under `opening_hours` because there is no need to check further segments if we know the restaurant is open at that time.
 
