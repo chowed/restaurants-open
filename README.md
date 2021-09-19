@@ -27,7 +27,7 @@ If the user inputs an invalid value for the time, there is an error that gets lo
 
 Time for DateTime object and segment from `opening_hours` need to be converted into a common time unit so they can be compared. I decided to convert them into minutes elapsed since the start of the day (Epoch day) since I couldn't find a way to convert them straight into a common time unit using the luxon package. Minutes are the smallest unit of time taken in by `luxon.DateTime.local()`, and also the smallest time unit provided in the `restaurant_data.json` so it works out. For the days, I worked in day of the week (Epoch week) which allowed me to iterate through days easily.
 
-I accommodated for times going past midnight (start time > end time) by doing 2 checks on the segment in `opening_hours`: only if the day is correct, then check the duration from start time to the end of the day (1440 is the number of minutes in a day). If the the day isn't correct, then it checks through the day(s) adding an index of 1, and checks the start of the day (0) until the end time (this check can be improved due to redundant day checks - detailed under improvements). 
+I accommodated for times going past midnight (start time > end time) by doing 2 checks on the segment in `opening_hours`: only if the day is correct, then check the duration from start time to the end of the day (1440 is the number of minutes in a day). If the the day isn't correct, then it checks the start of the day (0) until the end time for days `startDay + 1` to `endDay + 1` 
 
 I have followed the constructor pattern for consistency when creating the objects.
 
@@ -45,7 +45,7 @@ Test cases could have been added for the helper functions but the primary focus 
 
 ## Improvements
 
-Improvements could be made to the checking the opening hours for a test case where there's a multi-day, and its end time is beyond Midnight e.g. `Tue-Wed 11 pm - 2 am`. Only 1 call to `checkDay` is required to determine if the user's day is correct (or potentially correct if time past midnight). Therefore the 2nd call to `checkDates` is redundant if this function is more accurate, and potentially more optimal.
+Improvements could be made to the checking the opening hours for a test case where there's a multi-day, and its end time is beyond Midnight e.g. `Tue-Wed 11 pm - 2 am`. Only 1 call to `checkDay` is required to determine if the user's day is correct (or potentially correct if time past midnight). The function `checkDates` would need to be enhanced so that we can avoid a 2nd call to `checkDay`. This may result in a few extra checks so hard to say if this is more optimal.
 
 Having a test case that checks the throw message - was having trouble with chai checking the throw error.
 
