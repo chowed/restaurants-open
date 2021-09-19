@@ -21,23 +21,27 @@
       "opening_hours": "Thu-Sun 11:30 am - 4 pm"
     },
     {
-      "name": "e - Dinner Sat evening*",
-      "opening_hours": "Sat 5 pm - 9pm"
+      "name": "e : Dinner late evening*",
+      "opening_hours": "Tue-Wed 11 pm - 2am"
     },
     {
-      "name": "b - Lunch onwards to late night with Fri late night*",
+      "name": "f : Dinner Tue late night*",
+      "opening_hours": "Tue 11:30 pm - 1 am"
+    },
+    {
+      "name": "b : Lunch onwards to late night with Fri late night*",
       "opening_hours": "Sat-Tue 11:30 am - 12:30 am; Fri 11pm - 1:30am"
     },
     {
-      "name": "a - Lunch place with Thu evening to late*",
-      "opening_hours": "Thu-Sun 11:30 am - 4 pm; Thu 7 pm - 12:30 am"
+      "name": "a : Lunch place with Thu evening to late*",
+      "opening_hours": "Thu-Sun 11:30 am - 4 pm; Thu 7 pm - 10 pm"
     },
     {
-      "name": "d - Open 24/7 except at 5am*",
+      "name": "d : Open 24/7 except at 5am*",
       "opening_hours": "Mon-Sun 12 am - 5 am; Mon-Sun 5:01 am - 11:59 pm;"
     },
     {
-      "name": "c - Lunch and late night*",
+      "name": "c : Lunch and late night*",
       "opening_hours": "Thu-Sun 11:30 am - 4 pm; Thu-Sun 9 pm - 2 am"
     }
   ]

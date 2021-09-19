@@ -25,8 +25,8 @@ describe('Restaurants class', () => {
       );
     });
     it('reports restaurant with single-day period', () => {
-      expect(getRestaurantsOpenAt({ weekday: 5, hour: 18, minute: 0 })).to.deep.include(
-        'e - Dinner Sat evening*',
+      expect(getRestaurantsOpenAt({ weekday: 6, hour: 14, minute: 0 })).to.deep.include(
+        "World's Best Steakhouse",
       );
     });
     it('reports restaurant with input time the same as the start time', () => {
@@ -44,33 +44,33 @@ describe('Restaurants class', () => {
     });
     it('reports restaurant with multi-day period (past Sun)', () => {
       expect(getRestaurantsOpenAt({ weekday: 6, hour: 12, minute: 45 })).to.deep.include(
-        'b - Lunch onwards to late night with Fri late night*',
+        'b : Lunch onwards to late night with Fri late night*',
       );
     });
     it('reports restaurant with multi-day period (past Sun) and time past midnight', () => {
       expect(getRestaurantsOpenAt({ weekday: 2, hour: 0, minute: 15 })).to.deep.include(
-        'b - Lunch onwards to late night with Fri late night*',
+        'b : Lunch onwards to late night with Fri late night*',
       );
     });
     it('reports restaurant with single-day period with time past midnight', () => {
-      expect(getRestaurantsOpenAt({ weekday: 6, hour: 0, minute: 15 })).to.deep.include(
-        "World's Best Steakhouse",
+      expect(getRestaurantsOpenAt({ weekday: 2, hour: 0, minute: 15 })).to.deep.include(
+        'f : Dinner Tue late night*',
       );
     });
     it('reports restaurant with multi-day period with time past midnight', () => {
-      expect(getRestaurantsOpenAt({ weekday: 2, hour: 0, minute: 15 })).to.deep.include(
-        'b - Lunch onwards to late night with Fri late night*',
+      expect(getRestaurantsOpenAt({ weekday: 2, hour: 1, minute: 30 })).to.deep.include(
+        'e : Dinner late evening*',
       );
     });
     it('reports restaurant re-opening later in the day', () => {
       expect(getRestaurantsOpenAt({ weekday: 3, hour: 20, minute: 0 })).to.deep.include(
-        'a - Lunch place with Thu evening to late*',
+        'a : Lunch place with Thu evening to late*',
       );
     });
     it('reports 2 specific restaurants open at 8:30 am on Mondays', () => {
       expect(getRestaurantsOpenAt({ weekday: 0, hour: 8, minute: 30 })).to.deep.equal([
         'Kayasa Restaurant',
-        'd - Open 24/7 except at 5am*',
+        'd : Open 24/7 except at 5am*',
       ]);
     });
     it('reports 6 specific restaurants open at 11:30 am on Tuesdays', () => {
@@ -79,8 +79,8 @@ describe('Restaurants class', () => {
         'Tandoori Mahal',
         'The Golden Duck',
         "World's Best Steakhouse",
-        'b - Lunch onwards to late night with Fri late night*',
-        'd - Open 24/7 except at 5am*',
+        'b : Lunch onwards to late night with Fri late night*',
+        'd : Open 24/7 except at 5am*',
       ]);
     });
     it('reports 8 specific restaurants open at 3 pm on Wednesdays', () => {
@@ -89,13 +89,12 @@ describe('Restaurants class', () => {
         'Tandoori Mahal',
         'The Golden Duck',
         "World's Best Steakhouse",
-        'd - Open 24/7 except at 5am*']);
+        'd : Open 24/7 except at 5am*']);
     });
     it('reports 3 specific restaurants open at 11:30 pm on Thursdays', () => {
       expect(getRestaurantsOpenAt({ weekday: 3, hour: 23, minute: 30 })).to.deep.equal([
-        'a - Lunch place with Thu evening to late*',
-        'c - Lunch and late night*',
-        'd - Open 24/7 except at 5am*',
+        'c : Lunch and late night*',
+        'd : Open 24/7 except at 5am*',
       ]);
     });
     it('reports 6 specific restaurants open at 10:59 pm on Fridays', () => {
@@ -103,9 +102,9 @@ describe('Restaurants class', () => {
         'Tandoori Mahal',
         'The Golden Duck',
         "World's Best Steakhouse",
-        'b - Lunch onwards to late night with Fri late night*',
-        'c - Lunch and late night*',
-        'd - Open 24/7 except at 5am*',
+        'b : Lunch onwards to late night with Fri late night*',
+        'c : Lunch and late night*',
+        'd : Open 24/7 except at 5am*',
       ]);
     });
     it('reports 7 specific restaurants open at 5pm on Saturdays', () => {
@@ -114,19 +113,12 @@ describe('Restaurants class', () => {
         'Tandoori Mahal',
         'The Golden Duck',
         "World's Best Steakhouse",
-        'b - Lunch onwards to late night with Fri late night*',
-        'd - Open 24/7 except at 5am*',
-        'e - Dinner Sat evening*',
+        'b : Lunch onwards to late night with Fri late night*',
+        'd : Open 24/7 except at 5am*',
       ]);
     });
     it('reports 0 restaurants open at 5 am on Sundays', () => {
       expect(getRestaurantsOpenAt({ weekday: 6, hour: 5 })).to.deep.equal([]);
-    });
-    it('return with meaningful error message when hour out of range', () => {
-      // for some reason the error thrown in getRestaurantsOpenAt wasn't able to picked up
-      // by expect(fn).to.throw, so I returned the error in the catch instead
-      const errorObj = getRestaurantsOpenAt({ weekday: 6, hour: 30 });
-      expect(errorObj.message).to.equal('you specified 30 (of type number) as a hour, which is invalid');
     });
   });
 });
