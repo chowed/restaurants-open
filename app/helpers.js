@@ -91,8 +91,7 @@ function checkDay(startDayIndex, userDayIndex, endDayIndex) {
 
 /**
  * Check if the user's day falls within the opening days. Accommodates for single day,
- * multi-days, and multi-days with end day beyond Sunday. This check could be improved
- * by separating checkDay and checkTime, detailed in the readme.
+ * multi-days, and multi-days with end day beyond Sunday.
  *
  * @param {number} startDayIndex Epoch week for start day in days
  * @param {number} userDayIndex Epoch week for user input in days
@@ -118,11 +117,9 @@ function checkOpeningDaysAndHours(timeObj, dateSegment) {
   const userTimeEpochDay = calculateEpochDayMins(timeObj.hour, timeObj.minute);
 
   const d = new DateFactory(dateSegment);
-  // this efficiency could be improved
   if (d.startTime > d.endTime) { // time goes into next day e.g. `1 am`
-    // 1st checkDays: accepted time = startTime to the end of day
-    // 2nd checkDays: accepted time = start of day to endTime, and checks the next days instead
-    // modulus ensures day index doesn't go out of range (7). max mins in a day is 60 * 24 = 1440
+    // 1st checkDates: open hours = startTime to the end of day. max mins in a day is 60 * 24 = 1440
+    // 2nd checkDates: open hours = start of day to endTime, and checks the next days instead
     return checkDates(userDayIndex, userTimeEpochDay, d.startDayIndex, d.endDayIndex, d.startTime, 1440)
     || checkDates(userDayIndex, userTimeEpochDay, d.startDayIndex + 1, d.endDayIndex + 1, 0, d.endTime);
   }

@@ -14,6 +14,7 @@
     "node": ">= 12"
   },
   "scripts": {
+    "start": "node app/index.js",
     "test": "mocha test/**/*.spec.js"
   },
   "devDependencies": {

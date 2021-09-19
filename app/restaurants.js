@@ -39,7 +39,7 @@ class Restaurants {
       return openRestaurants.sort();
     } catch (error) {
       console.error(error.message);
-      return error;
+      throw error;
     }
   }
 }
