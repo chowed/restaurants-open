@@ -49,9 +49,6 @@ const DateFactory = function (dateString) {
   let endDayIndex;
   if (daysArray.length > 1) { // deal with multiple days
     endDayIndex = INDEX_OF_DAY[daysArray[1]];
-    if (startDayIndex > endDayIndex) { // end day is past Sunday
-      endDayIndex += 7;
-    }
   } else { // 1 day
     endDayIndex = startDayIndex;
   }
@@ -126,8 +123,8 @@ function checkOpeningDaysAndHours(timeObj, dateSegment) {
     // 1st checkDays: accepted time = startTime to the end of day
     // 2nd checkDays: accepted time = start of day to endTime, and checks the next days instead
     // modulus ensures day index doesn't go out of range (7). max mins in a day is 60 * 24 = 1440
-    return checkDates(userDayIndex, userTimeEpochDay, d.startDayIndex, d.endDayIndex % 7, d.startTime, 1440)
-    || checkDates(userDayIndex, userTimeEpochDay, (d.startDayIndex + 1) % 7, (d.endDayIndex + 1) % 7, 0, d.endTime);
+    return checkDates(userDayIndex, userTimeEpochDay, d.startDayIndex, d.endDayIndex, d.startTime, 1440)
+    || checkDates(userDayIndex, userTimeEpochDay, d.startDayIndex + 1, d.endDayIndex + 1, 0, d.endTime);
   }
   return checkDates(userDayIndex, userTimeEpochDay, d.startDayIndex, d.endDayIndex, d.startTime, d.endTime);
 }
