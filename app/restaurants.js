@@ -26,6 +26,8 @@ class Restaurants {
     try {
       if (time.invalid != null) {
         throw new Error(time.invalid.explanation);
+      } if (time.day - 10 > 6) {
+        throw new Error(`Day input needs to be between 0 - 6, you've entered: ${time.day - 10}`);
       }
       const openRestaurants = [];
       this.data.forEach((restaurant) => {

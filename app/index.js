@@ -5,12 +5,17 @@ const restaurantDataFile = '../restaurant_data.json';
 const restaurants = new Restaurants(restaurantDataFile);
 const dayArray = luxon.Info.weekdays('long');
 
-const inputDay = 2;
-const inputHour = 0;
-const inputMinute = 15;
+// feel free to change these values
+const inputDay = 2; // 0 - 6
+const inputHour = 0; // 0 - 23
+const inputMinute = 15; // 0 - 59
 
+/**
+ * Provides a means of running the app to see open restaurants at a user's input time
+ *
+ */
 function initialise() {
-  const inputDateObj = luxon.DateTime.local(2021, 6, inputDay, inputHour, inputMinute);
+  const inputDateObj = luxon.DateTime.local(2021, 5, 10 + inputDay, inputHour, inputMinute);
   try {
     const restaurantsOpen = restaurants.getRestaurantsOpenAt(inputDateObj);
     const inputDateMessage = `${inputDateObj.hour}:${inputDateObj.minute} on ${dayArray[inputDay]}s`;

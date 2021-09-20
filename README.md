@@ -47,7 +47,7 @@ Test cases could have been added for the helper functions but the primary focus 
 
 Improvements could be made to the checking the opening hours for a test case where its end time is beyond Midnight e.g. `Tue-Wed 11 pm - 2 am`. Only 1 call to `checkDay` is required to determine if the user's day is correct (or potentially correct if time past midnight). The function `checkDates` would need to be enhanced so that we can avoid a 2nd call to `checkDay`. This may result in a few extra checks so hard to say if this is more optimal.
 
-Having a test case that checks the throw message - was having trouble with chai checking the throw error.
+Having a test cases that checks the throw message for invalid user input - was having trouble with chai checking the throw error.
 
 Could use the `pre-commit` npm package, which only accepts the commit once tests have run and been successful. This would guarantee that tests are run before being committed rather than having to rely on memory.
 
