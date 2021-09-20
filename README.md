@@ -25,7 +25,7 @@ If the user inputs an invalid value for the time, there is an error that gets lo
 
 ### Design considerations
 
-Time for DateTime object and segment from `opening_hours` need to be converted into a common time unit so they can be compared. I decided to convert them into minutes elapsed since the start of the day (Epoch day) since I couldn't find a way to convert them straight into a common time unit using the luxon package. Minutes are the smallest unit of time taken in by `luxon.DateTime.local()`, and also the smallest time unit provided in the `restaurant_data.json` so it works out. For the days, I worked in day of the week (Epoch week) which allowed me to iterate through days easily.
+Time for DateTime object and segment from `opening_hours` need to be converted into a common time unit so they can be compared. I decided to convert them into minutes elapsed since the start of the day (Epoch day) since I couldn't find a way to convert them straight into a common time unit using the luxon package. Minutes are the smallest unit of time taken in by `luxon.DateTime.local()`, and also the smallest time unit provided in the `restaurant_data.json` so it works out. For the days, I worked in day of the week (Epoch week) which allowed me to compare days.
 
 I accommodated for times going past midnight (start time > end time) by doing 2 checks on the segment in `opening_hours`: only if the day is correct, then check the duration from start time to the end of the day (1440 is the number of minutes in a day). If the the day isn't correct, then it checks the start of the day (0) until the end time for days `startDay + 1` to `endDay + 1` 
 
